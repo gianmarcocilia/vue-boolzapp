@@ -168,11 +168,27 @@ const app = createApp({
                 }
             ],
             curChatIndex: 0,
+            myMessage: "",
+            myTimeout: null
         }
     },
     methods: {
         curChat(clickedIndex) {
             this.curChatIndex = clickedIndex;
         },
+        addMessage() {
+            this.contacts[this.curChatIndex].messages.push({
+                message: this.myMessage,
+                status: 'sent'
+            })
+            this.myMessage = "";
+            myTimeout = setTimeout(this.receivedMex, 1000);
+        },
+        receivedMex() {
+            this.contacts[this.curChatIndex].messages.push({
+                message: 'Ok!',
+                status: 'received'
+            })
+        }
     }
 }).mount("#app");

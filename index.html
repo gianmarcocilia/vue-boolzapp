@@ -105,24 +105,7 @@
                 <!-- /Header Right -->
                 <!-- Main Right -->
                 <main class="main-right" v-for="(chat, i) in contacts" v-show="i === curChatIndex">
-                    <section class="my-chat">
-
-                        <p class="my-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel nam vitae quo
-                            aspernatur quas.
-                            </p>
-                        <!-- <div class="info-message">
-                            <div class="show">
-                                <button><i class="fa-solid fa-angle-down"></i></button>
-                                <div class="options">
-                                    <p>Info messaggio</p>
-                                    <p>Cancella messaggio</p>
-                                </div>
-                            </div>
-                            <span class="hours">16.18</span>
-                        </div> -->
-                    </section>
-                    <section class="your-chat">
-                        <p class="your-message" v-for="(curMessages, j) in chat.messages">
+                        <p :class="curMessages.status === 'sent' ? 'my-message' : 'your-message'" v-for="(curMessages, j) in chat.messages">
                             {{curMessages.message}}
                         </p>
                         <!-- <div class="info-message">
@@ -135,14 +118,12 @@
                             </div>
                             <span class="hours">16.18</span>
                         </div> -->
-
-                    </section>
                 </main>
                 <!-- Main Right -->
                 <!-- Footer Right -->
                 <footer class="footer-right">
                     <button class="icon-2"><i class="fa-regular fa-face-smile"></i></button>
-                    <input id="write" type="text" placeholder="Scrivi un messaggio">
+                    <input id="write" type="text" placeholder="Scrivi un messaggio" v-model="myMessage" @keyup.enter="addMessage()">
                     <div class="push-to-talk">
                         <button class="icon-2 audio"><i class="fa-solid fa-microphone"></i></button>
                     </div>
