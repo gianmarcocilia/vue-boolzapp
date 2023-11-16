@@ -169,7 +169,8 @@ const app = createApp({
             ],
             curChatIndex: 0,
             myMessage: "",
-            myTimeout: null
+            myTimeout: null,
+            searchText: ''
         }
     },
     methods: {
@@ -188,6 +189,16 @@ const app = createApp({
             this.contacts[this.curChatIndex].messages.push({
                 message: 'Ok!',
                 status: 'received'
+            })
+        },
+        searchName() {
+            let search = this.searchText.toLowerCase();
+            this.contacts.forEach(name => {
+                if(name.name.toLowerCase().includes(search)) {
+                    name.visible = true;
+                } else {
+                    name.visible = false;
+                }
             })
         }
     }

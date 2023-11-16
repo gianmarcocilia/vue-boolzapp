@@ -55,7 +55,7 @@
                         <div class="research-control">
                             <div class="research">
                                 <label for="search"><i class="fa-solid fa-magnifying-glass"></i></label>
-                                <input id="search" type="text" placeholder="Cerca o inizia una nuova chat">
+                                <input id="search" type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchText" @keyup="searchName()">
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
 
                     <!-- Chat Section -->
                     <ul class="chats-section">
-                        <li class="chat-container" v-for="(contact, index) in contacts" @click="curChat(index)">
+                        <li class="chat-container" v-for="(contact, index) in contacts" @click="curChat(index)" v-show="contact.visible">
                             <img class="circle-avatar" :src="`img/avatar${contact.avatar}.jpg`" alt="">
                             <div class="chat-text">
                                 <h4>{{contact.name}}</h4>
