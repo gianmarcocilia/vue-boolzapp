@@ -166,10 +166,13 @@ const app = createApp({
                         }
                     ],
                 }
-            ]
+            ],
+            curChatIndex: 0,
         }
     },
     methods: {
-        
+        curChat(clickedIndex) {
+            this.curChatIndex = clickedIndex;
+        },
     }
 }).mount("#app");

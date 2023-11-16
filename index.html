@@ -63,7 +63,7 @@
 
                     <!-- Chat Section -->
                     <ul class="chats-section">
-                        <li class="chat-container" v-for="(contact, index) in contacts">
+                        <li class="chat-container" v-for="(contact, index) in contacts" @click="curChat(index)">
                             <img class="circle-avatar" :src="`img/avatar${contact.avatar}.jpg`" alt="">
                             <div class="chat-text">
                                 <h4>{{contact.name}}</h4>
@@ -104,14 +104,13 @@
                 </header>
                 <!-- /Header Right -->
                 <!-- Main Right -->
-                <main class="main-right">
+                <main class="main-right" v-for="(chat, i) in contacts" v-show="i === curChatIndex">
                     <section class="my-chat">
 
                         <p class="my-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel nam vitae quo
-                            aspernatur quas,
-                            ea quasi excepturi beatae cum quis quisquam voluptatibus repellendus non dicta
-                            architecto libero necessitatibus unde?</p>
-                        <div class="info-message">
+                            aspernatur quas.
+                            </p>
+                        <!-- <div class="info-message">
                             <div class="show">
                                 <button><i class="fa-solid fa-angle-down"></i></button>
                                 <div class="options">
@@ -120,23 +119,13 @@
                                 </div>
                             </div>
                             <span class="hours">16.18</span>
-                        </div>
+                        </div> -->
                     </section>
                     <section class="your-chat">
-                        <p class="your-message">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore animi
-                            esse perferendis
-                            quaerat
-                            ullam dolore fugit soluta, ipsam velit porro aliquid dolores corrupti nobis deleniti quis!
-                            Dicta. Quaerat ab ad. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quis
-                            molestias, magni qui mollitia ut sint aliquam aspernatur necessitatibus rerum non maxime
-                            eum? Inventore doloribus dolorem ducimus, iusto incidunt aperiam! Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Perferendis magni quasi dolor? Impedit quas voluptates odio
-                            repellat doloribus voluptatum aperiam, sint ab. Accusantium aliquam atque animi numquam
-                            quasi dolore id. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quidem
-                            dicta, laborum repellat, delectus ea placeat ullam modi incidunt possimus voluptatem odit
-                            tenetur voluptas minus ipsum! Expedita voluptate ducimus distinctio?
+                        <p class="your-message" v-for="(curMessages, j) in chat.messages">
+                            {{curMessages.message}}
                         </p>
-                        <div class="info-message">
+                        <!-- <div class="info-message">
                             <div class="show">
                                 <button><i class="fa-solid fa-angle-down"></i></button>
                                 <div class="options">
@@ -145,7 +134,7 @@
                                 </div>
                             </div>
                             <span class="hours">16.18</span>
-                        </div>
+                        </div> -->
 
                     </section>
                 </main>

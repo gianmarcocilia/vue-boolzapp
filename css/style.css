@@ -266,7 +266,8 @@ body {
 }
 
 .your-chat {
-    justify-content: flex-start;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .my-chat .my-message,
