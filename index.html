@@ -67,7 +67,8 @@
                             <img class="circle-avatar" :src="`img/avatar${contact.avatar}.jpg`" alt="">
                             <div class="chat-text">
                                 <h4>{{contact.name}}</h4>
-                                <p></p>
+                                <p>{{contact.messages[contact.messages.length - 1].message}}</p>
+                                <span class="last-access">{{contact.messages[contact.messages.length - 1].date}}</span>
                             </div>
                         </li>
                     </ul>
@@ -85,7 +86,7 @@
                         <img class="circle-avatar" :src="`img/avatar${contacts[curChatIndex].avatar}.jpg`" alt="">
                         <div class="chat-text">
                             <h4>{{ contacts[curChatIndex].name }}</h4>
-                            <span>Ultimo accesso oggi alle 16:26</span>
+                            <span>Ultimo accesso {{contacts[curChatIndex].messages[contacts[curChatIndex].messages.length - 1].date}}</span>
                         </div>
                     </div>
                     <nav class="nav-icon">
@@ -107,6 +108,7 @@
                 <main class="main-right">
                         <p :class="curChat.status === 'sent' ? 'my-message' : 'your-message'" v-for="curChat in contacts[curChatIndex].messages">
                             {{curChat.message}}
+                            <span class="hours">{{ curChat.date }}</span>
                         </p>
                         <!-- <div class="info-message">
                             <div class="show">
