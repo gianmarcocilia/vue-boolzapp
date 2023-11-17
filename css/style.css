@@ -89,7 +89,7 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-    .app {
+    #app {
         padding: 0;
     }
 }
@@ -266,7 +266,6 @@ body {
     gap: 1rem;
 }
 
-
 .my-message,
 .your-message {
     padding: 20px 30px 24px 15px;
@@ -284,18 +283,11 @@ body {
     background-color: white;
 }
 
-.info-message {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    right: 40px;
-    padding: 5px 0;
-    text-align: right;
-}
-
-.show button {
+.main-right button {
     color: gray;
+    position: absolute;
+    top: 5px;
+    right: 8px;
 }
 
 .hours {
@@ -308,22 +300,22 @@ body {
 
 .options {
     position: absolute;
-    top: 18px;
-    right: 8px;
-    display: none;
+    top: 25px;
+    right: 10px;
     width: max-content;
     text-align: center;
     background-color: white;
     box-shadow: 5px 10px 10px #888888;
+    z-index: 1;
 }
 
 .options p {
     padding: 10px;
+    cursor: pointer;
 }
 
-.show:hover .options {
-    display: block;
-    
+.options p:hover {
+    background-color: #c7c6c6;
 }
 
 /* Footer RIGHT */
@@ -416,7 +408,7 @@ body {
     }
 
     .col-right {
-        width: calc(100% - var(--header-avatar-container));
+        width: calc(100%);
     }
 
     .main-left .chat-top {
@@ -428,7 +420,7 @@ body {
     }
 
     .col-right .main-right {
-        padding: 30px 0px 15px 20px;
+        padding: 30px 15px 15px 20px;
     }
 
     .footer-right #write {
@@ -454,8 +446,8 @@ body {
         display: none;
     }
 
-    .my-chat .my-message,
-    .your-chat .your-message {
+    .my-message,
+    .your-message {
         width: 80%;
     }
 

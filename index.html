@@ -67,8 +67,10 @@
                             <img class="circle-avatar" :src="`img/avatar${contact.avatar}.jpg`" alt="">
                             <div class="chat-text">
                                 <h4>{{contact.name}}</h4>
-                                <p>{{contact.messages[contact.messages.length - 1].message}}</p>
-                                <span class="last-access">{{contact.messages[contact.messages.length - 1].date}}</span>
+                                <p v-if="contact.messages.length > 0">{{contact.messages[contact.messages.length - 1].message}}</p>
+                                <p v-else></p>
+                                <span v-if="contact.messages.length > 0" class="last-access">{{contact.messages[contact.messages.length - 1].date}}</span>
+                                <span v-else class="last-access">10/01/2020 16:15:22</span>
                             </div>
                         </li>
                     </ul>
@@ -86,7 +88,8 @@
                         <img class="circle-avatar" :src="`img/avatar${contacts[curChatIndex].avatar}.jpg`" alt="">
                         <div class="chat-text">
                             <h4>{{ contacts[curChatIndex].name }}</h4>
-                            <span>Ultimo accesso {{contacts[curChatIndex].messages[contacts[curChatIndex].messages.length - 1].date}}</span>
+                            <span v-if="contacts[curChatIndex].messages.length > 0">Ultimo accesso {{contacts[curChatIndex].messages[contacts[curChatIndex].messages.length - 1].date}}</span>
+                            <span v-else>Ultimo accesso 10/01/2020 16:15:22</span>
                         </div>
                     </div>
                     <nav class="nav-icon">
@@ -106,20 +109,15 @@
                 <!-- /Header Right -->
                 <!-- Main Right -->
                 <main class="main-right">
-                        <p :class="curChat.status === 'sent' ? 'my-message' : 'your-message'" v-for="curChat in contacts[curChatIndex].messages">
-                            {{curChat.message}}
+                        <div :class="curChat.status === 'sent' ? 'my-message' : 'your-message'" v-for="(curChat, i) in contacts[curChatIndex].messages">
+                            <p>{{curChat.message}}</p>
                             <span class="hours">{{ curChat.date }}</span>
-                        </p>
-                        <!-- <div class="info-message">
-                            <div class="show">
-                                <button><i class="fa-solid fa-angle-down"></i></button>
-                                <div class="options">
-                                    <p>Info messaggio</p>
-                                    <p>Cancella messaggio</p>
-                                </div>
+                            <button @click="showOptions(i)"><i class="fa-solid fa-angle-down"></i></button>
+                            <div class="options" v-show="options === true && i === curOptionIndex">
+                                <p>Info messaggio</p>
+                                <p @click="deleteMex(i)">Cancella messaggio</p>
                             </div>
-                            <span class="hours">16.18</span>
-                        </div> -->
+                        </div>
                 </main>
                 <!-- Main Right -->
                 <!-- Footer Right -->

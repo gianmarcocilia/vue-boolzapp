@@ -170,12 +170,15 @@ const app = createApp({
             curChatIndex: 0,
             myMessage: "",
             myTimeout: null,
-            searchText: ''
+            searchText: '',
+            options: false,
+            curOptionIndex: 0
         }
     },
     methods: {
         curChat(clickedIndex) {
             this.curChatIndex = clickedIndex;
+            this.options = false
         },
         addMessage() {
             if(this.myMessage !== "") {
@@ -202,6 +205,14 @@ const app = createApp({
                     name.visible = false;
                 }
             })
+        },
+        showOptions(index) {
+            this.options = !this.options;
+            this.curOptionIndex = index;
+        },
+        deleteMex(clickedIndex) {
+            this.contacts[this.curChatIndex].messages.splice(clickedIndex, 1);
+            this.options = false;
         }
     }
 }).mount("#app");
