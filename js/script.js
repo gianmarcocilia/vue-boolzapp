@@ -178,12 +178,14 @@ const app = createApp({
             this.curChatIndex = clickedIndex;
         },
         addMessage() {
-            this.contacts[this.curChatIndex].messages.push({
-                message: this.myMessage,
-                status: 'sent'
-            })
-            this.myMessage = "";
-            myTimeout = setTimeout(this.receivedMex, 1000);
+            if(this.myMessage !== "") {
+                this.contacts[this.curChatIndex].messages.push({
+                    message: this.myMessage,
+                    status: 'sent'
+                })
+                myTimeout = setTimeout(this.receivedMex, 1000);
+            }
+            this.myMessage = "";     
         },
         receivedMex() {
             this.contacts[this.curChatIndex].messages.push({

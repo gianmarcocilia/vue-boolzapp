@@ -82,9 +82,9 @@
                 <!-- Header Right -->
                 <header class="header-right">
                     <div class="chat-name">
-                        <img class="circle-avatar" src="img/avatar_1.jpg" alt="">
+                        <img class="circle-avatar" :src="`img/avatar${contacts[curChatIndex].avatar}.jpg`" alt="">
                         <div class="chat-text">
-                            <h4>Michele</h4>
+                            <h4>{{ contacts[curChatIndex].name }}</h4>
                             <span>Ultimo accesso oggi alle 16:26</span>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                 <!-- Footer Right -->
                 <footer class="footer-right">
                     <button class="icon-2"><i class="fa-regular fa-face-smile"></i></button>
-                    <input id="write" type="text" placeholder="Scrivi un messaggio" v-model="myMessage" @keyup.enter="addMessage()">
+                    <input id="write" type="text" placeholder="Scrivi un messaggio" v-model.trim="myMessage" @keyup.enter="addMessage()">
                     <div class="push-to-talk">
                         <button class="icon-2 audio"><i class="fa-solid fa-microphone"></i></button>
                     </div>
