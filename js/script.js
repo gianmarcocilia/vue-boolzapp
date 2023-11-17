@@ -1,3 +1,7 @@
+const dt = luxon.DateTime;
+
+
+dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS);
 
 
 const {createApp} = Vue;
@@ -172,7 +176,8 @@ const app = createApp({
             myTimeout: null,
             searchText: '',
             options: false,
-            curOptionIndex: 0
+            curOptionIndex: 0,
+            dt
         }
     },
     methods: {
@@ -184,16 +189,18 @@ const app = createApp({
             if(this.myMessage !== "") {
                 this.contacts[this.curChatIndex].messages.push({
                     message: this.myMessage,
-                    status: 'sent'
+                    status: 'sent',
+                    date: this.dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS)
                 })
-                myTimeout = setTimeout(this.receivedMex, 1000);
+                myTimeout = setTimeout(this.receivedMex, 2000);
             }
             this.myMessage = "";     
         },
         receivedMex() {
             this.contacts[this.curChatIndex].messages.push({
                 message: 'Ok!',
-                status: 'received'
+                status: 'received',
+                date: this.dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS)
             })
         },
         searchName() {
