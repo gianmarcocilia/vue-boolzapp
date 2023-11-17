@@ -104,9 +104,9 @@
                 </header>
                 <!-- /Header Right -->
                 <!-- Main Right -->
-                <main class="main-right" v-for="(chat, i) in contacts" v-show="i === curChatIndex">
-                        <p :class="curMessages.status === 'sent' ? 'my-message' : 'your-message'" v-for="(curMessages, j) in chat.messages">
-                            {{curMessages.message}}
+                <main class="main-right">
+                        <p :class="curChat.status === 'sent' ? 'my-message' : 'your-message'" v-for="curChat in contacts[curChatIndex].messages">
+                            {{curChat.message}}
                         </p>
                         <!-- <div class="info-message">
                             <div class="show">
